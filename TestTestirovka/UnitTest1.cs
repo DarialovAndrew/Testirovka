@@ -12,19 +12,8 @@ namespace TestTestirovka
         [TestMethod]
         public void TestMethod1()
         {
-            var input = new List<object>() { 1, 2, "a", "b" };
-            var output = new List<int>() { 1, 2 };
-
-            var result = new Tasks().Task1<int>(input);
-            if (!(output.All(result.Contains) && output.Count == result.Count))
-                throw new Exception("WRONG");
-
-            var input1 = new List<object>() { 1, 2, "a", "b", "aasf", "1", "123", 231 };
-            var output1 = new List<int>() { 1, 2, 231 };
-
-            var result1 =new  Tasks().Task1<int>(input1);
-            if (!(output1.All(result1.Contains) && output1.Count == result1.Count))
-                throw new Exception("WRONG");
+            CollectionAssert.AreEquivalent(new Tasks().Task1<int>(new List<object> { "Andrew", "Victor", 1, 2, 3 }), new List<int> { 1,2,3});
+            CollectionAssert.AreEquivalent(new Tasks().Task1<int>(new List<object> { "Andrew", "Victor", 1, 2, 3,5,6 }), new List<int> { 1, 2, 3 ,5,6});
         }
         [TestMethod]
         public void TestMethod2()
